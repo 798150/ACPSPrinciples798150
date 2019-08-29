@@ -12,7 +12,7 @@ function setup() {
 
 
 function draw(){
-  background(0, 255, 0);
+  background(0, 255, 0, 50);
   runBalls();
 }
 
