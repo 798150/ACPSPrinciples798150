@@ -34,8 +34,8 @@ class Ball{//  ++++++++++++ start class
   }
 
   render(){
-    fill(255, 0, 0);
-    ellipse(this.x, this.y, 10, 100);
+    fill(random(255), random(255), random(255));
+    ellipse(this.x, this.y, 30, 30);
   }
 }
  //  +++++++++++++++++++++++++++  end class
