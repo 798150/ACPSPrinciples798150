@@ -32,7 +32,7 @@ function runBalls(){
 
   update(){
     var distToMainBall;
-    if(this.id >= 0{
+    if(this.id >= 0){
       disToMainBall = this.loc.dist(mainBall.loc);
       if(distToMainBall < 250){
         this.acc = p5.Vector.sub( mainBall.loc, this.loc);
