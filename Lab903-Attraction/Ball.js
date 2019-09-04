@@ -1,11 +1,15 @@
 // Aug 21
 
 class Ball{
-  constructor(x, y, dx, dy){
+  constructor(x, y, dx, dy, id){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
-    //this.acc = createVector(0, 1)
     this.clr = color(random(255), random(255), random(255));
+    this.acc=createVector(0,24);
+    this.w=15;
+    this.id=id;
+    if (this.id<0){this.w=50}
+
   }
 run(){
   this.checkedges();
@@ -27,13 +31,27 @@ checkedges(){
     this.vel.y = -this.vel.y;
   }
 }
-  update(){
-    //this.vel.add(this.acc)
-    this.loc.add(this.vel)
+update(){
+  var distToMainBall;
+  if(this.id >= 0){
+    disToMainBall = this.loc.dist(mainBall.loc);
+    if(distToMainBall < 250){
+      this.acc = p5.Vector.sub( mainBall.loc, this.loc);
+      this.acc.normalize();
+      this.acc.mult(0.1);
+    }
+    if(distTomainball<150){
+      this.acc=p5.Vector.sub(this.loc,mainBall.loc);
+      this.acc.normalize();
+      this.acc.mult(0.5);
+    }
+  }
+}
+
   }
   render(){
     fill(this.clr);
-    ellipse(this.x, this.y, 50, 50);
+    ellipse(this.loc.x, this.loc.y, this.w, this.w);
   }
 }
 
