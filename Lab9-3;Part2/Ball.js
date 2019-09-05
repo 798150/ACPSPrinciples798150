@@ -1,4 +1,4 @@
-// Aug 28
+// Sept 5
 
 class Ball {
   constructor(x, y, dx, dy, id){
