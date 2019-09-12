@@ -53,7 +53,7 @@ class Ball {
      }
 
     }
-    this.vel.limit(9);
+    this.vel.limit(11);
      this.vel.add(this.acc);
    this.loc.add(this.vel);
 

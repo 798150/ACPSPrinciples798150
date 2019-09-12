@@ -33,7 +33,7 @@ function loadObjects(x){
 function runObjects(){
   mainBall.run();
   mainBall2.run();
-  for(var i = 0; i < balls.length; i++){
+  for(var i = 0; i < ships.length; i++){
     ships[i].run();
 }
 }
