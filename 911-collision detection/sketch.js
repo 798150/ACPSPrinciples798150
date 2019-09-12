@@ -1,6 +1,6 @@
 
 // Kyle Knudson
-//  9/05/19
+//  9/11/19
 
 var ships = []; //declares array
 var mainBall;

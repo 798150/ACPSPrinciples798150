@@ -1,4 +1,4 @@
-// Sept. 05
+// Sept. 11
 
 class Ball {
   constructor(x, y, dx, dy, id){
@@ -44,7 +44,7 @@ class Ball {
        //add attraction
        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
        this.acc.normalize();
-       this.acc.mult(0.4);
+       this.acc.mult(0.5);
      }
      if(distToMainBall2 < 150){ // add repulsion
        this.acc = p5.Vector.sub(this.loc, mainBall.loc);
