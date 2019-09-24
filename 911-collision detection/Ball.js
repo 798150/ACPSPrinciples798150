@@ -1,71 +1,40 @@
 // Sept. 11
 
-class Ball {
-  constructor(x, y, dx, dy, id){
-   this.loc = createVector(x, y);
-   this.vel = createVector(dx, dy);
-   this.acc = createVector(0,0);
-   this.clr = color(random(245), 0, random(245));
-   this.id = id;
+class Ball{
+  constructor(x, y, dx, dy) {
+    this.clr = color(random(255), random(255), random(255));
+    this.loc = createVector(x, y);
+    this.vel = createVector(dx, dy);
+    this.acc = createVector(0, .1);
+} //end of constructor
+run(){
+  this.render();
+  this.checkEdges();
+  this.update();
+  this.isColliding();
+} //end of run
+render(){
+  fill(this.clr);
+  ellipse(this.loc.x, this.loc.y, 20, 20);
+} //end of render
 
-  }
+  checkEdges(){
+    if(this.loc.x < 0 || this.loc.x > width)this.vel.x = -this.vel.x;
+    if(this.loc.y < 0 || this.loc.y > height) this.vel.y = -this.vel.y;
+  } //end of checkEdges
 
-  run(){
-    this.checkedges();
-    this.update();
-    this.render();
-  }
+update(){
+  //this.clr = color(random(255), random(255), random(255));
+  this.loc.add(this.vel);
+  this.vel.add(this.acc);
+} //end of update
 
-  checkedges(){
-    if(this.loc.x < 0){
-      this.vel.x = -this.vel.x;
-      // this.loc.x = 800;
-    }
-    if(this.loc.x > width){
-      this.vel.x = -this.vel.x;
-    }
-    if(this.loc.y < 0){
-      this.vel.y = -this.vel.y;
-    }
-    if(this.loc.y > height){
-      this.vel.y = -this.vel.y;
-      // this.loc.y = height -2;
-    }
-
-  }
-  update(){
-    var distToMainBall;
-    var distToMainBall2;
-    if(this.id > 2){
-     distToMainBall = this.loc.dist(mainBall.loc);
-     distToMainBall2 = this.loc.dist(mainBall2.loc);
-
-     if(distToMainBall < 250){
-       //add attraction
-       this.acc = p5.Vector.sub(mainBall.loc, this.loc);
-       this.acc.normalize();
-       this.acc.mult(0.5);
-     }
-     if(distToMainBall2 < 150){ // add repulsion
-       this.acc = p5.Vector.sub(this.loc, mainBall.loc);
-       this.acc.normalize();
-       this.acc.mult(0.5);
-     }
-
-    }
-    this.vel.limit(11);
-     this.vel.add(this.acc);
-   this.loc.add(this.vel);
-
-
-  }
-
-  render(){
-    fill(this.clr);
-    if (this.id <3 ){
-      ellipse (this.loc.x, this.loc.y, 40, 40);
-    }else {
-    ellipse(this.loc.x, this.loc.y, 15, 15);
-  }
-  }
-}//  +++++++++++++++++++++++++++++++++++  End Ball Class
+isColliding(){
+  if(this.loc.x > paddle.loc.x &&
+  this.loc.x < paddle.loc.x +paddle.w &&
+  this.loc.y > paddle.loc.y &&
+  this.loc.y < paddle.loc.y + paddle.h){
+    this.vel.y = -this.vel.y;
+}
+}
+};
