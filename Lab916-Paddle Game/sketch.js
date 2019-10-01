@@ -81,14 +81,18 @@ function draw() {
 function startGame(){
   //title
   textSize(75);
-  fill(255,255,255);
+  fill(255,105,255);
   text('Paddle Game',200,200);
   textSize(50);
   runButtons();
   textSize(25);
-  fill(255,255,255);
+  fill(255,240,255);
   //directions
-  text('Choose one of the following modes below to play,', 50, 350);
+  text('Choose one of the following modes below to play.', 120, 350);
+  text('The higher the difficulty, the more balls will appear.', 120, 370);
+  text('If you want to win, do not let the balls hit the bottom of the paddle.', 65, 390);
+  text('As the ball hits the bottom, you will lose one life.', 120, 410);
+  text('The game will end when you have zero lives left!', 120, 430)
   //checks if user touches the box
   //loads balls based of mode
   if(gameMode==='easy'||gameMode==='medium'||gameMode==='hard'){
@@ -168,13 +172,13 @@ function isTouching(){
        if(win==='no'){
          textSize(100);
          fill(255,0,0);
-         text("You Lose!",200,400);
+         text("You Lost!!!",200,400);
        }
        //if win
        if(win==='yes'){
          textSize(100);
          fill(255,0,0);
-         text("You Win!",200,400);
+         text("You Won!!!",200,400);
        }
        //buttons appear
        runButtons();
@@ -249,4 +253,4 @@ function isTouching(){
             //run ball class
             balls[i].run();
           }
-        }        
+        }
