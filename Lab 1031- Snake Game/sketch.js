@@ -1,6 +1,5 @@
-
 // Kyle Knudson
-//  10/9/19
+// 10/31/19
 // Snake Game
 segments=[];
 hitFood='no';
