@@ -6,6 +6,8 @@ hitFood='no';
 food=[];
 score=0;
 w=20;
+xTurnLocation=-1;
+yTurnLocation=-1;
 headerHeight=30;
 function setup() {
   // put setup code here
@@ -45,6 +47,9 @@ function runSnake(){
     if (hitFood==='yes'){
       segments[i+1]= new Snake(segments[i].loc.x-segments[i].w,segments[i].loc.y,50,50,i+1);
       hitFood='no';
-    }
+
+    if(keyIsPressed){
+      xTurnLocation=segments[0].loc.x;
+      yTurnLocation=segments[0].loc.y;  }
   }
 }
