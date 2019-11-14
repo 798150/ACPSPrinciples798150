@@ -2,31 +2,28 @@
 // 10/31/19
 // Snake Game
 segments=[];
-hitFood='no';
 numberFood=0;
 food=[];
 score=0;
-w=25;
-xTurnLocation=-1;
-yTurnLocation=-1;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(0, 0, 0);
+  background(20, 20, 20);
   endGame='no';
+  hitFood='no';
   loadHead();
   loadFood();
+  frameRate(16);
 }
 
 function draw() {
   runSnake();
   runFood();
-if(hitFood==='yes'){
-  numberFood=numberFood+1;
-  addSegments();
-  hitFood='no'
-}
+  if(hitFood==='yes'){
+    numberFood=numberFood+1;
+    hitFood='no';
+  }
 //if (endGame==='yes'){
   //remove();
   //clear();
@@ -34,41 +31,36 @@ if(hitFood==='yes'){
 }
 
 function loadHead(){
-  segments[0]=new Snake(0,0,0,0,25,color(255,0,0),0);
+  head= new Snake(0,0,0,0,10,color(245, 151, 0));
 }
 
 function loadFood(){
-  food[0]= new Food(random(800),random(800),25,0);
+  food[0]= new Food(int(random(80)),int(random(80)),10,0);
 }
 
 function runFood(){
-  for (var i=0; i<food.length;i++){
-    food[i].run();
-  }
+  food[0].run();
+  //for (var i=0; i<food.length;i++){
+    //food[i].run();
+  //}
 }
 
 function runSnake(){
-  background(20,20,20);
-  for (var i=0; i<segments.length; i++){
-    segments[i].run();
-  }
-  if(keyIsPressed){
-    xTurnLocation=segments[0].loc.x;
-    yTurnLocation=segments[0].loc.y;
-  }
+  background(0, 98, 245);
+  head.run();
 }
 
-function addSegments(){
-  if(segments[numberFood-1].vel.x===3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x-segments[numberFood-1].w,segments[numberFood-1].loc.y,3,0,25,color(255,0,0),numberFood);
-  }
-  if(segments[numberFood-1].vel.x===-3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x+segments[numberFood-1].w,segments[numberFood-1].loc.y,-3,0,25,color(255,0,0),numberFood);
-  }
-  if(segments[numberFood-1].vel.y===3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y-segments[numberFood-1].w,0,3,25,color(255,0,0),numberFood);
-  }
-  if(segments[numberFood-1].vel.y===-3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y+segments[numberFood-1].w,0,-3,25,color(255,0,0),numberFood);
-  }
-}
+//function addSegments(){
+  //if(segments[numberFood-1].vel.x===3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x-segments[numberFood-1].w,segments[numberFood-1].loc.y,3,0,25,color(255,0,0),numberFood);
+  //}
+  //if(segments[numberFood-1].vel.x===-3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x+segments[numberFood-1].w,segments[numberFood-1].loc.y,-3,0,25,color(255,0,0),numberFood);
+  //}
+  //if(segments[numberFood-1].vel.y===3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y-segments[numberFood-1].w,0,3,25,color(255,0,0),numberFood);
+  //}
+  //if(segments[numberFood-1].vel.y===-3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y+segments[numberFood-1].w,0,-3,25,color(255,0,0),numberFood);
+  //}
+//}
