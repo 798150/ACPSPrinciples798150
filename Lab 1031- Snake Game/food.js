@@ -3,7 +3,7 @@ class Food{
   constructor(x,y,w,id){
     this.loc=createVector(x,y);
     this.w=w;
-    this.clr=color(217, 4, 203);
+    this.clr=color(220, 10, 200);
     this.id=id;
   }
 
