@@ -74,6 +74,30 @@ checkEdges(){
     head.loc.add(this.vel);
 
   }
+  
+  function startScreen(){
+    textSize(75);
+    fill(255,0,0);
+    text('Snake Game',200,200);
+    textSize(25);
+    fill(0,255,0)
+    text('Start',375,550);
+    rect(375,575,50,50);
+    fill(0,0,255);
+    text('Click the start box to begin the game. You are the red snake',50,350);
+    text('After you start, use the arrow keys to move the snake',50,375);
+    text('Your goal is to eat as much food as possible. If you',50,400);
+    text('eat a food, you grow one length. If you turn into yourself,',50,425);
+    text('you die, and the game ends. Good luck!',50,450);
+    if(mouseIsPressed&&
+        mouseX>375&&
+        mouseX<425&&
+        mouseY>575&&
+        mouseY<625){
+          clear();
+          gameState=2;
+        }
+  }
 
 tangled(){
 for (var i=0; i<this.body.length; i++){
