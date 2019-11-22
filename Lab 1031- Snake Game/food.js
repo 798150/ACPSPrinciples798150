@@ -1,9 +1,9 @@
-
 class Food{
   constructor(x,y,w,id){
     this.loc=createVector(x,y);
     this.w=w;
-    this.clr=color(220, 10, 200);
+    this.clr=color(140, 26, 3);
+    // food color
     this.id=id;
   }
 
@@ -19,6 +19,6 @@ class Food{
 
   update(){
 
-  }
+    }
 
 }

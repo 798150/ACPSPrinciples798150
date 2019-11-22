@@ -75,10 +75,9 @@ checkEdges(){
 
   }
 
-
 tangled(){
 for (var i=0; i<this.body.length; i++){
-  if (head.loc.x===this.body[i].x||head.loc.y===this.body[i].y){
+  if (head.loc.x===this.body[i].x&&head.loc.y===this.body[i].y){
     endGame='yes';
   }
 }
@@ -87,9 +86,10 @@ for (var i=0; i<this.body.length; i++){
 hitFood(){
     if(head.loc.x===food[0].loc.x&&
         head.loc.y===food[0].loc.y){
-          food[0]= new Food(int(random(53)),int(random(53)),15,0);
+          food[0]= new Food(int(random(40)),int(random(40)),15,0);
           this.body.push(createVector(head.loc.x,head.loc.y));
           hitFood='yes';
+// food size and spawn after eaten
   }
     }
-}
+}//end of snake class
